@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PharmaWater | Medicines in Water</title>
+
+<style>
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --dark:#062f35;
+    --dark2:#084c55;
+    --green:#00a896;
+    --cyan:#00c9c8;
+    --light:#e9fbf8;
+    --white:#ffffff;
+    --text:#183f43;
+    --muted:#648084;
+    --orange:#ff9f43;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4fbfa;
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+}
+
+button{
+    font-family:inherit;
+}
+
+section{
+    padding:100px 7%;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(6,47,53,.93);
+    backdrop-filter:blur(12px);
+}
+
+.navbar{
+    max-width:1250px;
+    margin:auto;
+    padding:18px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:var(--cyan);
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+.nav-links a{
+    color:#d9f5f2;
+    font-size:14px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--cyan);
+}
+
+.menu{
+    display:none;
+    color:white;
+    font-size:25px;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:100vh;
+    padding-top:130px;
+    display:flex;
+    align-items:center;
+    background:
+    radial-gradient(circle at 85% 30%,rgba(0,201,200,.25),transparent 30%),
+    linear-gradient(135deg,#062f35,#08777b);
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-content{
+    max-width:1250px;
+    margin:auto;
+    width:100%;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:50px;
+    align-items:center;
+}
+
+.tag{
+    display:inline-block;
+    padding:9px 18px;
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:30px;
+    background:rgba(255,255,255,.08);
+    margin-bottom:25px;
+    color:#a8fffa;
+    font-size:14px;
+}
+
+.hero h1{
+    font-size:clamp(45px,6vw,76px);
+    line-height:1.02;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#50eee3;
+}
+
+.hero p{
+    color:#cdebea;
+    font-size:19px;
+    line-height:1.8;
+    max-width:650px;
+}
+
+.hero-buttons{
+    margin-top:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 25px;
+    border-radius:30px;
+    font-weight:bold;
+    margin-right:10px;
+    transition:.3s;
+}
+
+.btn-main{
+    background:#00c9c8;
+    color:#06363b;
+}
+
+.btn-main:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px rgba(0,201,200,.3);
+}
+
+.btn-outline{
+    border:1px solid #8deee9;
+    color:white;
+}
+
+.btn-outline:hover{
+    background:white;
+    color:#06363b;
+}
+
+/* Floating bubbles */
+
+.bubble{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.1);
+    animation:float 7s infinite ease-in-out;
+}
+
+.b1{width:70px;height:70px;left:8%;top:20%;}
+.b2{width:30px;height:30px;left:35%;top:75%;animation-delay:2s;}
+.b3{width:100px;height:100px;right:10%;top:12%;animation-delay:1s;}
+.b4{width:45px;height:45px;right:35%;bottom:10%;animation-delay:3s;}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-30px)}
+}
+
+/* Hero visual */
+
+.water-visual{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.drop{
+    width:330px;
+    height:430px;
+    border-radius:60% 60% 60% 60% / 70% 70% 40% 40%;
+    transform:rotate(45deg);
+    background:
+    linear-gradient(135deg,#68fff3,#008c91);
+    box-shadow:
+    0 0 80px rgba(0,230,220,.25),
+    inset -20px -20px 50px rgba(0,0,0,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.drop-content{
+    transform:rotate(-45deg);
+    text-align:center;
+}
+
+.drop-content .medicine{
+    font-size:80px;
+}
+
+.drop-content h2{
+    font-size:30px;
+}
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro{
+    background:white;
+}
+
+.section-heading{
+    text-align:center;
+    max-width:800px;
+    margin:0 auto 60px;
+}
+
+.section-heading .small{
+    color:var(--green);
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:13px;
+}
+
+.section-heading h2{
+    color:var(--dark);
+    font-size:45px;
+    margin:12px 0 18px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.intro-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.info-box{
+    padding:35px;
+    border-radius:25px;
+    background:var(--light);
+}
+
+.info-box h3{
+    font-size:28px;
+    color:var(--dark);
+    margin-bottom:15px;
+}
+
+.info-box p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.highlight{
+    background:linear-gradient(135deg,#00a896,#006e73);
+    color:white;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 20px 40px rgba(0,120,110,.15);
+}
+
+.highlight h3{
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+.highlight p{
+    line-height:1.8;
+    color:#dcfffa;
+}
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats{
+    padding:60px 7%;
+    background:#073c43;
+    color:white;
+}
+
+.stats-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    text-align:center;
+}
+
+.stat{
+    padding:20px;
+}
+
+.stat-icon{
+    font-size:35px;
+}
+
+.stat h3{
+    font-size:34px;
+    color:#5ef4e8;
+    margin:10px 0;
+}
+
+.stat p{
+    color:#b7d9d7;
+    font-size:14px;
+}
+
+/* =====================================================
+   SOURCES
+===================================================== */
+
+.sources{
+    background:#f0fbf9;
+}
+
+.source-grid{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.source-card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+.source-card:hover{
+    transform:translateY(-10px);
+}
+
+.source-icon{
+    width:65px;
+    height:65px;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    background:#e1f8f5;
+    margin-bottom:20px;
+}
+
+.source-card h3{
+    color:var(--dark);
+    margin-bottom:12px;
+}
+
+.source-card p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* =====================================================
+   JOURNEY
+===================================================== */
+
+.journey{
+    background:white;
+}
+
+.journey-line{
+    max-width:1050px;
+    margin:auto;
+    position:relative;
+}
+
+.journey-line::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:3px;
+    background:#b7e8e3;
+    transform:translateX(-50%);
+}
+
+.step{
+    width:50%;
+    padding:25px 45px;
+    position:relative;
+}
+
+.step:nth-child(odd){
+    left:0;
+    text-align:right;
+}
+
+.step:nth-child(even){
+    left:50%;
+}
+
+.step-dot{
+    position:absolute;
+    top:35px;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:#00a896;
+    border:5px solid white;
+    box-shadow:0 0 0 3px #8bded7;
+}
+
+.step:nth-child(odd) .step-dot{
+    right:-11px;
+}
+
+.step:nth-child(even) .step-dot{
+    left:-11px;
+}
+
+.step-content{
+    background:#f0fbf9;
+    padding:25px;
+    border-radius:18px;
+}
+
+.step-content h3{
+    color:#087f73;
+    margin-bottom:8px;
+}
+
+.step-content p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* =====================================================
+   EFFECTS
+===================================================== */
+
+.effects{
+    background:#eaf8f6;
+}
+
+.effects-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.effect{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    display:flex;
+    gap:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+
+.effect-icon{
+    font-size:45px;
+}
+
+.effect h3{
+    color:var(--dark);
+    margin-bottom:8px;
+}
+
+.effect p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* =====================================================
+   ANTIBIOTIC RESISTANCE
+===================================================== */
+
+.resistance{
+    background:
+    linear-gradient(135deg,#062f35,#075d62);
+    color:white;
+}
+
+.resistance-content{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.resistance h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.resistance p{
+    color:#c5e7e4;
+    line-height:1.8;
+}
+
+.resistance-list{
+    margin-top:25px;
+    list-style:none;
+}
+
+.resistance-list li{
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.resistance-list li::before{
+    content:"✓";
+    color:#5ef4e8;
+    margin-right:12px;
+    font-weight:bold;
+}
+
+.resistance-visual{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:25px;
+    padding:40px;
+    text-align:center;
+}
+
+.resistance-visual .big{
+    font-size:100px;
+}
+
+/* =====================================================
+   SOLUTIONS
+===================================================== */
+
+.solutions{
+    background:white;
+}
+
+.solution-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.solution{
+    padding:30px;
+    border-radius:20px;
+    background:#f3fbfa;
+    border-top:4px solid #00a896;
+}
+
+.solution h3{
+    margin:15px 0 10px;
+    color:var(--dark);
+}
+
+.solution p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* =====================================================
+   ACTION
+===================================================== */
+
+.action{
+    background:linear-gradient(135deg,#00a896,#006e73);
+    color:white;
+}
+
+.action-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.action-card{
+    background:rgba(255,255,255,.1);
+    padding:30px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.2);
+}
+
+.action-card h3{
+    color:#8ffff6;
+    margin-bottom:10px;
+}
+
+.action-card p{
+    color:#e0fffb;
+    line-height:1.7;
+}
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+.quiz{
+    background:#f1faf9;
+}
+
+.quiz-box{
+    max-width:750px;
+    margin:auto;
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.question{
+    font-size:23px;
+    font-weight:bold;
+    color:var(--dark);
+    margin-bottom:25px;
+}
+
+.option{
+    display:block;
+    padding:15px;
+    border:2px solid #d8ece9;
+    border-radius:12px;
+    margin:10px 0;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.option:hover{
+    background:#e9faf7;
+    border-color:#00a896;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.quiz button{
+    margin-top:20px;
+    border:none;
+    cursor:pointer;
+}
+
+#result{
+    margin-top:20px;
+    font-weight:bold;
+}
+
+/* =====================================================
+   FINAL CTA
+===================================================== */
+
+.final{
+    text-align:center;
+    background:#dff7f4;
+}
+
+.final h2{
+    font-size:48px;
+    color:var(--dark);
+    margin-bottom:20px;
+}
+
+.final p{
+    max-width:750px;
+    margin:0 auto 30px;
+    color:var(--muted);
+    line-height:1.8;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    background:#042b31;
+    color:white;
+    padding:50px 7%;
+}
+
+.footer-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:40px;
+}
+
+footer h3{
+    color:#63eee4;
+    margin-bottom:15px;
+}
+
+footer p,
+footer a{
+    color:#a9cfcc;
+    line-height:1.8;
+}
+
+footer ul{
+    list-style:none;
+}
+
+footer li{
+    margin:7px 0;
+}
+
+.copyright{
+    text-align:center;
+    margin-top:40px;
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,.1);
+    color:#82aaa7;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .hero-content,
+    .intro-grid,
+    .resistance-content{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        text-align:center;
+    }
+
+    .hero p{
+        margin:auto;
+    }
+
+    .hero-buttons{
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:10px;
+    }
+
+    .drop{
+        width:230px;
+        height:300px;
+    }
+
+    .stats-grid,
+    .source-grid,
+    .solution-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .effects-grid,
+    .action-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:75px 5%;
+    }
+
+    .section-heading h2{
+        font-size:34px;
+    }
+
+    .stats-grid,
+    .source-grid,
+    .solution-grid{
+        grid-template-columns:1fr;
+    }
+
+    .journey-line::before{
+        left:10px;
+    }
+
+    .step,
+    .step:nth-child(even),
+    .step:nth-child(odd){
+        width:100%;
+        left:0;
+        text-align:left;
+        padding-left:40px;
+        padding-right:0;
+    }
+
+    .step:nth-child(odd) .step-dot,
+    .step:nth-child(even) .step-dot{
+        left:0;
+        right:auto;
+    }
+
+    .final h2{
+        font-size:36px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header>
+
+<nav class="navbar">
+
+    <div class="logo">
+        💧 Pharma<span>Water</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#sources">Sources</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#effects">Effects</a></li>
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+    </ul>
+
+    <div class="menu">☰</div>
+
+</nav>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+<div class="bubble b1"></div>
+<div class="bubble b2"></div>
+<div class="bubble b3"></div>
+<div class="bubble b4"></div>
+
+<div class="hero-content">
+
+<div>
+
+<span class="tag">
+ENVIRONMENTAL AWARENESS PROJECT
+</span>
+
+<h1>
+Medicines in <span>Water</span>
+</h1>
+
+<p>
+The invisible pollution we often overlook.
+Pharmaceutical residues can enter wastewater,
+rivers and other water environments — creating
+a growing environmental challenge.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#about" class="btn btn-main">
+Discover the Problem →
+</a>
+
+<a href="#solutions" class="btn btn-outline">
+Find Solutions
+</a>
+
+</div>
+
+</div>
+
+
+<div class="water-visual">
+
+<div class="drop">
+
+<div class="drop-content">
+
+<div class="medicine">💊</div>
+
+<h2>
+Every Drop<br>
+Tells a Story
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="intro" id="about">
+
+<div class="section-heading">
+
+<span class="small">UNDERSTANDING THE ISSUE</span>
+
+<h2>
+What Are Pharmaceutical Residues?
+</h2>
+
+<p>
+Pharmaceutical residues are medicines, their metabolites,
+or transformation products that can remain in wastewater
+and the environment after medicines are used or released.
+</p>
+
+</div>
+
+
+<div class="intro-grid">
+
+<div class="info-box">
+
+<h3>
+An Invisible Pollutant
+</h3>
+
+<p>
+Unlike plastic waste or oil spills, pharmaceutical
+pollution may not be visible to the human eye.
+Compounds such as antibiotics, painkillers, hormones
+and other medicines can occur in water at very low
+concentrations.
+</p>
+
+<br>
+
+<p>
+The challenge is that many pharmaceutical substances
+are designed to produce biological effects. Even when
+present in small amounts, researchers investigate how
+continuous environmental exposure may affect aquatic
+organisms.
+</p>
+
+</div>
+
+
+<div class="highlight">
+
+<h3>
+Why is this becoming important?
+</h3>
+
+<p>
+Modern medicine has transformed human health.
+At the same time, increasing pharmaceutical use,
+population growth and improved analytical techniques
+have increased attention to pharmaceutical residues
+in water.
+</p>
+
+<br>
+
+<p>
+The issue connects healthcare, wastewater management,
+environmental science and responsible medicine disposal.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats">
+
+<div class="stats-grid">
+
+<div class="stat">
+
+<div class="stat-icon">💊</div>
+
+<h3>01</h3>
+
+<p>
+Medicines can enter wastewater after human use.
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">🚰</div>
+
+<h3>02</h3>
+
+<p>
+Conventional wastewater treatment does not remove every pharmaceutical compound completely.
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">🐟</div>
+
+<h3>03</h3>
+
+<p>
+Aquatic organisms can be exposed to pharmaceutical residues.
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">🌍</div>
+
+<h3>04</h3>
+
+<p>
+Pharmaceutical pollution is an international environmental research issue.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SOURCES
+===================================================== -->
+
+<section class="sources" id="sources">
+
+<div class="section-heading">
+
+<span class="small">WHERE DOES IT COME FROM?</span>
+
+<h2>
+Major Sources of Pharmaceutical Pollution
+</h2>
+
+<p>
+Medicines can enter water systems through several
+different pathways.
+</p>
+
+</div>
+
+
+<div class="source-grid">
+
+
+<div class="source-card">
+
+<div class="source-icon">💊</div>
+
+<h3>Human Excretion</h3>
+
+<p>
+After taking medicine, the body may excrete some active
+ingredients or metabolites through urine and feces.
+These substances can enter sewage systems.
+</p>
+
+</div>
+
+
+<div class="source-card">
+
+<div class="source-icon">🗑️</div>
+
+<h3>Improper Disposal</h3>
+
+<p>
+Throwing medicines into sinks, toilets or household waste
+can allow pharmaceutical compounds to enter wastewater
+or the environment.
+</p>
+
+</div>
+
+
+<div class="source-card">
+
+<div class="source-icon">🏥</div>
+
+<h3>Hospitals</h3>
+
+<p>
+Hospitals and healthcare facilities use many medicines,
+creating pharmaceutical waste that requires appropriate
+management.
+</p>
+
+</div>
+
+
+<div class="source-card">
+
+<div class="source-icon">🏭</div>
+
+<h3>Manufacturing</h3>
+
+<p>
+Pharmaceutical manufacturing can generate wastewater
+containing active pharmaceutical ingredients when
+environmental controls are inadequate.
+</p>
+
+</div>
+
+
+<div class="source-card">
+
+<div class="source-icon">🐄</div>
+
+<h3>Agriculture & Livestock</h3>
+
+<p>
+Veterinary medicines can enter soil and water through
+animal waste and agricultural runoff.
+</p>
+
+</div>
+
+
+<div class="source-card">
+
+<div class="source-icon">🌧️</div>
+
+<h3>Runoff</h3>
+
+<p>
+Rainfall can transport pharmaceutical contaminants from
+land surfaces into nearby waterways.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     JOURNEY
+===================================================== -->
+
+<section class="journey" id="journey">
+
+<div class="section-heading">
+
+<span class="small">FOLLOW THE PATH</span>
+
+<h2>
+How Does a Medicine Reach a River?
+</h2>
+
+<p>
+A simple example of how pharmaceutical residues can move
+through the water cycle.
+</p>
+
+</div>
+
+
+<div class="journey-line">
+
+
+<div class="step">
+
+<div class="step-dot"></div>
+
+<div class="step-content">
+
+<h3>1. Medicine is taken</h3>
+
+<p>
+A person uses a medicine according to medical advice.
+Some of the substance may be metabolized by the body.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-dot"></div>
+
+<div class="step-content">
+
+<h3>2. Residues enter sewage</h3>
+
+<p>
+Active ingredients or metabolites may leave the body
+through urine or feces and enter wastewater.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-dot"></div>
+
+<div class="step-content">
+
+<h3>3. Wastewater treatment</h3>
+
+<p>
+Treatment plants remove many pollutants. However,
+removal efficiency differs between pharmaceutical
+compounds and treatment processes.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-dot"></div>
+
+<div class="step-content">
+
+<h3>4. Treated water is released</h3>
+
+<p>
+After treatment, water may be discharged into rivers,
+lakes, coastal waters or other receiving environments.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-dot"></div>
+
+<div class="step-content">
+
+<h3>5. Environmental exposure</h3>
+
+<p>
+Remaining pharmaceutical residues can interact with
+aquatic organisms and become part of the broader
+environmental contaminant mixture.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     EFFECTS
+===================================================== -->
+
+<section class="effects" id="effects">
+
+<div class="section-heading">
+
+<span class="small">ENVIRONMENTAL IMPACT</span>
+
+<h2>
+Why Is Pharmaceutical Pollution a Concern?
+</h2>
+
+<p>
+Scientists study pharmaceutical residues because
+medicines are biologically active substances.
+</p>
+
+</div>
+
+
+<div class="effects-grid">
+
+
+<div class="effect">
+
+<div class="effect-icon">🐟</div>
+
+<div>
+
+<h3>Aquatic Organisms</h3>
+
+<p>
+Certain pharmaceuticals can affect fish and other
+aquatic organisms. Researchers have observed effects
+in some species involving behaviour, development and
+reproduction.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="effect">
+
+<div class="effect-icon">🌱</div>
+
+<div>
+
+<h3>Ecosystems</h3>
+
+<p>
+Continuous exposure to multiple contaminants may
+contribute to chemical stress within aquatic ecosystems.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="effect">
+
+<div class="effect-icon">🦠</div>
+
+<div>
+
+<h3>Antibiotic Resistance</h3>
+
+<p>
+Antibiotic residues in the environment are among the
+factors investigated in relation to the development
+and spread of antimicrobial resistance.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="effect">
+
+<div class="effect-icon">🔬</div>
+
+<div>
+
+<h3>Mixture Effects</h3>
+
+<p>
+Water can contain mixtures of different chemicals.
+Researchers continue studying how combinations of
+contaminants may behave together.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="effect">
+
+<div class="effect-icon">💧</div>
+
+<div>
+
+<h3>Water Quality</h3>
+
+<p>
+Pharmaceutical residues add another category of
+contaminants that water-management systems need
+to consider.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="effect">
+
+<div class="effect-icon">🌍</div>
+
+<div>
+
+<h3>Long-Term Exposure</h3>
+
+<p>
+The consequences of low-level, long-term exposure
+to pharmaceutical mixtures remain an active area
+of environmental research.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ANTIBIOTIC RESISTANCE
+===================================================== -->
+
+<section class="resistance">
+
+<div class="resistance-content">
+
+<div>
+
+<h2>
+The Antibiotic Resistance Connection
+</h2>
+
+<p>
+Antibiotics are designed to affect microorganisms.
+When antibiotic residues reach environmental waters,
+they become part of a complex system involving
+bacteria, genes and microbial communities.
+</p>
+
+<ul class="resistance-list">
+
+<li>Antibiotic residues can occur in wastewater.</li>
+
+<li>Wastewater contains diverse microbial communities.</li>
+
+<li>Environmental exposure is studied as one factor
+in antimicrobial resistance.</li>
+
+<li>Responsible antibiotic use is important for protecting
+their effectiveness.</li>
+
+</ul>
+
+</div>
+
+
+<div class="resistance-visual">
+
+<div class="big">🦠</div>
+
+<h3>
+Protect the effectiveness of medicines
+</h3>
+
+<p>
+Use antibiotics responsibly and only when prescribed
+or recommended by a qualified healthcare professional.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SOLUTIONS
+===================================================== -->
+
+<section class="solutions" id="solutions">
+
+<div class="section-heading">
+
+<span class="small">THE WAY FORWARD</span>
+
+<h2>
+How Can We Reduce Pharmaceutical Pollution?
+</h2>
+
+<p>
+There is no single solution. Prevention requires action
+from individuals, healthcare systems, industries and
+water-management authorities.
+</p>
+
+</div>
+
+
+<div class="solution-grid">
+
+
+<div class="solution">
+
+<div style="font-size:40px;">💊</div>
+
+<h3>Dispose Medicines Properly</h3>
+
+<p>
+Use authorized medicine take-back or collection
+programs where available. Follow local disposal
+instructions rather than flushing medicines into water.
+</p>
+
+</div>
+
+
+<div class="solution">
+
+<div style="font-size:40px;">🧑‍⚕️</div>
+
+<h3>Use Medicines Responsibly</h3>
+
+<p>
+Take medicines according to professional medical
+advice and avoid unnecessary use or sharing of
+prescription medicines.
+</p>
+
+</div>
+
+
+<div class="solution">
+
+<div style="font-size:40px;">🏥</div>
+
+<h3>Healthcare Waste Management</h3>
+
+<p>
+Healthcare facilities can implement systems for
+segregation, collection and safe disposal of
+pharmaceutical waste.
+</p>
+
+</div>
+
+
+<div class="solution">
+
+<div style="font-size:40px;">🏭</div>
+
+<h3>Cleaner Manufacturing</h3>
+
+<p>
+Manufacturers can reduce environmental releases
+through improved process controls, wastewater
+management and responsible production practices.
+</p>
+
+</div>
+
+
+<div class="solution">
+
+<div style="font-size:40px;">🚰</div>
+
+<h3>Advanced Treatment</h3>
+
+<p>
+Advanced wastewater treatment technologies can
+help remove certain pharmaceutical compounds
+from wastewater.
+</p>
+
+</div>
+
+
+<div class="solution">
+
+<div style="font-size:40px;">🔬</div>
+
+<h3>Research & Monitoring</h3>
+
+<p>
+Monitoring water systems and researching emerging
+contaminants helps authorities understand where
+action is needed.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     INDIVIDUAL ACTION
+===================================================== -->
+
+<section class="action">
+
+<div class="section-heading">
+
+<span class="small" style="color:#9ffff7;">
+EVERYONE HAS A ROLE
+</span>
+
+<h2 style="color:white;">
+What Can You Do?
+</h2>
+
+<p style="color:#d5f8f5;">
+Small responsible actions can help reduce unnecessary
+pharmaceutical pollution.
+</p>
+
+</div>
+
+
+<div class="action-grid">
+
+
+<div class="action-card">
+
+<h3>01 — Check Before You Flush</h3>
+
+<p>
+Do not automatically flush unused medicines. Check
+your local official disposal guidance first.
+</p>
+
+</div>
+
+
+<div class="action-card">
+
+<h3>02 — Use Take-Back Programs</h3>
+
+<p>
+When available, return unwanted medicines to an
+authorized collection or take-back facility.
+</p>
+
+</div>
+
+
+<div class="action-card">
+
+<h3>03 — Never Share Prescription Medicines</h3>
+
+<p>
+A medicine prescribed for one person may not be
+appropriate for someone else.
+</p>
+
+</div>
+
+
+<div class="action-card">
+
+<h3>04 — Spread Awareness</h3>
+
+<p>
+Talk about responsible medicine disposal and help
+others understand the connection between healthcare
+and environmental protection.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section class="quiz" id="quiz">
+
+<div class="section-heading">
+
+<span class="small">INTERACTIVE AWARENESS</span>
+
+<h2>
+How Much Do You Know?
+</h2>
+
+<p>
+Test your understanding of pharmaceutical residues
+in water.
+</p>
+
+</div>
+
+
+<div class="quiz-box">
+
+<div class="question">
+
+What should you generally do with unused medicines?
+
+</div>
+
+
+<label class="option">
+
+<input type="radio" name="q" value="a">
+
+Flush them down the toilet
+
+</label>
+
+
+<label class="option">
+
+<input type="radio" name="q" value="b">
+
+Use an approved take-back or collection program
+
+</label>
+
+
+<label class="option">
+
+<input type="radio" name="q" value="c">
+
+Pour them into a river
+
+</label>
+
+
+<label class="option">
+
+<input type="radio" name="q" value="d">
+
+Leave them outdoors
+
+</label>
+
+
+<button class="btn btn-main" onclick="checkQuiz()">
+
+Check Answer
+
+</button>
+
+
+<div id="result"></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL
+===================================================== -->
+
+<section class="final">
+
+<div class="container">
+
+<h2>
+Protect Water. Protect Life.
+</h2>
+
+<p>
+Medicines have an essential role in healthcare.
+The goal is not to stop using medicines — it is to
+use them responsibly, manage pharmaceutical waste
+properly and protect the water systems that support
+people and ecosystems.
+</p>
+
+<a href="#about" class="btn btn-main">
+Explore Again ↑
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<h3>💧 PharmaWater</h3>
+
+<p>
+An environmental awareness website dedicated to
+educating people about pharmaceutical residues in
+water and responsible medicine disposal.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>Explore</h3>
+
+<ul>
+
+<li><a href="#about">About the Problem</a></li>
+
+<li><a href="#sources">Sources</a></li>
+
+<li><a href="#journey">Journey</a></li>
+
+<li><a href="#effects">Effects</a></li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h3>Take Action</h3>
+
+<ul>
+
+<li><a href="#solutions">Solutions</a></li>
+
+<li><a href="#quiz">Awareness Quiz</a></li>
+
+<li><a href="#solutions">Responsible Disposal</a></li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 PharmaWater Awareness Project |
+Medicines in Water: The Growing Problem of Pharmaceutical Residues
+
+</div>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+function checkQuiz(){
+
+    const options =
+        document.getElementsByName("q");
+
+    let selected = "";
+
+    for(let option of options){
+
+        if(option.checked){
+
+            selected = option.value;
+
+        }
+
+    }
+
+    const result =
+        document.getElementById("result");
+
+    if(selected === "b"){
+
+        result.innerHTML =
+        "✅ Correct! Approved medicine take-back or collection programs are an appropriate option where available.";
+
+        result.style.color = "#008f80";
+
+    }
+
+    else if(selected === ""){
+
+        result.innerHTML =
+        "⚠️ Please select an answer.";
+
+        result.style.color = "#e68a00";
+
+    }
+
+    else{
+
+        result.innerHTML =
+        "❌ Not quite. Medicine disposal should follow local official guidance.";
+
+        result.style.color = "#d65c45";
+
+    }
+
+}
+
+
+/* Simple scroll reveal */
+
+const cards =
+document.querySelectorAll(
+".source-card, .effect, .solution, .step, .action-card"
+);
+
+const observer =
+new IntersectionObserver(
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},
+{threshold:.12}
+);
+
+
+cards.forEach(card=>{
+
+card.style.opacity="0";
+card.style.transform="translateY(30px)";
+card.style.transition="all .7s ease";
+
+observer.observe(card);
+
+});
+
+</script>
+
+</body>
+</html>
